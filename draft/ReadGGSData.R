@@ -16,4 +16,21 @@ ssspend_wb<- gs_title(filename_search)
 sheets<- gs_ws_ls(ssspend_wb)
 # to read sheet: ssspend_wb %>% gs_read(ws="<name>")
 
+# get spending data
+get.spend.data<- function(wb, month) {
+  temp_ws<- wb %>% gs_read(ws = month);   max.rowid<- nrow(temp_ws);   rm(temp_ws)
+  wb %>% 
+    gs_read(ws = month, range = cell_limits(c(2, 2), c(max.rowid, 9))) %>% 
+    data.frame(stringsAsFactors=FALSE) %>% 
+    mutate(Debit=as.numeric(gsub('\\$', '', Debit)))
+}
+
+get.spend.data.months<- function(wb, months) {
+  if (length(months)>=1) ws<- get.spend.data(wb, months[1])
+  if (length(months)>1) {
+    for (month in months[-1]) ws<- ws %>% bind_rows(get.spend.data(wb, month))
+  }
+  ws
+}
+
 # edit cells
