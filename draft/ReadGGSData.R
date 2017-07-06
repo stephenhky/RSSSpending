@@ -22,7 +22,8 @@ get.spend.data<- function(wb, month) {
   wb %>% 
     gs_read(ws = month, range = cell_limits(c(2, 2), c(max.rowid, 9))) %>% 
     data.frame(stringsAsFactors=FALSE) %>% 
-    mutate(Debit=as.numeric(gsub('\\$', '', Debit)))
+    mutate(Debit=as.numeric(gsub('\\$', '', Debit)),
+           Comment=ifelse(is.na(Comment), '', Comment))
 }
 
 get.spend.data.months<- function(wb, months) {
