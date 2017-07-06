@@ -2,6 +2,7 @@
 # loading libraries
 library(googlesheets)
 library(dplyr)
+library(SnowballC)
 
 # list
 spreadsheets<- gs_ls("SS Expenditure*")
@@ -22,7 +23,8 @@ get.spend.data<- function(wb, month) {
   wb %>% 
     gs_read(ws = month, range = cell_limits(c(2, 2), c(max.rowid, 9))) %>% 
     data.frame(stringsAsFactors=FALSE) %>% 
-    mutate(Debit=as.numeric(gsub('\\$', '', Debit)),
+    mutate(Date=as.Date(Date, "%m/%d/%Y"),
+           Debit=as.numeric(gsub('\\$', '', Debit)),
            Comment=ifelse(is.na(Comment), '', Comment))
 }
 
@@ -32,6 +34,11 @@ get.spend.data.months<- function(wb, months) {
     for (month in months[-1]) ws<- ws %>% bind_rows(get.spend.data(wb, month))
   }
   ws
+}
+
+# natural language processing
+normalize.categories<- function() {
+  
 }
 
 # edit cells
