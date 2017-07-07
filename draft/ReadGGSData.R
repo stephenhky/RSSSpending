@@ -3,6 +3,8 @@
 library(googlesheets)
 library(dplyr)
 library(SnowballC)
+library(NLP)
+library(openNLP)
 
 # list
 spreadsheets<- gs_ls("SS Expenditure*")
@@ -37,7 +39,10 @@ get.spend.data.months<- function(wb, months) {
 }
 
 # natural language processing
-normalize.categories<- function() {
+# ref: https://stackoverflow.com/questions/30995232/how-to-use-opennlp-to-get-pos-tags-in-r
+xwalk<- read.csv('crosswalk.csv', stringsAsFactors = FALSE, header=FALSE)
+xwalk.map<- xwalk$V2;    names(xwalk.map)<- xwalk$V1;   rm(xwalk)
+normalize.category<- function(category) {
   
 }
 
