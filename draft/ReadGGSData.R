@@ -42,6 +42,12 @@ get.spend.data.months<- function(wb, months) {
 # ref: https://stackoverflow.com/questions/30995232/how-to-use-opennlp-to-get-pos-tags-in-r
 xwalk<- read.csv('crosswalk.csv', stringsAsFactors = FALSE, header=FALSE)
 xwalk.map<- xwalk$V2;    names(xwalk.map)<- xwalk$V1;   rm(xwalk)
+word_token_annotator<- Maxent_Word_Token_Annotator()
+tokenize<- function(string) {
+  s<- as.String(string)
+  annobj<- Annotation(1L, 'sentence', 1L, nchar(s))
+  annotate(s, word_token_annotator, annobj)
+}
 normalize.category<- function(category) {
   
 }
