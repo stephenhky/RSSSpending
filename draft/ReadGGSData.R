@@ -43,10 +43,17 @@ get.spend.data.months<- function(wb, months) {
 xwalk<- read.csv('crosswalk.csv', stringsAsFactors = FALSE, header=FALSE)
 xwalk.map<- xwalk$V2;    names(xwalk.map)<- xwalk$V1;   rm(xwalk)
 word_token_annotator<- Maxent_Word_Token_Annotator()
-tokenize<- function(string) {
+postag_annotator<- Maxent_POS_Tag_Annotator()
+tokenize.int<- function(string) {
   s<- as.String(string)
   annobj<- Annotation(1L, 'sentence', 1L, nchar(s))
   annotate(s, word_token_annotator, annobj)
+}
+tag.POS<- function(string) {
+  annotate(as.String(string), postag_annotator, tokenize.int(as.String(string)))
+}
+stem.all.tokens<- function(string) {
+  
 }
 normalize.category<- function(category) {
   
