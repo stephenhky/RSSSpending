@@ -297,3 +297,4 @@ ENV/
 # Compiled Static libraries
 
 # Executables
+.Rproj.user
