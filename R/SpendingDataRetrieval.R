@@ -3,6 +3,7 @@
 #' 
 #' @param wb Google Spreadsheet workbook
 #' @param month Month ('January', 'Feburary' ...)
+#' @return data frame of the spending of the given month
 #' @export
 get.spend.data<- function(wb, month) {
   temp_ws<- wb %>% gs_read(ws = month);   max.rowid<- nrow(temp_ws);   rm(temp_ws)
@@ -18,6 +19,7 @@ get.spend.data<- function(wb, month) {
 #' 
 #' @param wb Google Spreadsheet workbook
 #' @param months a vector of months
+#' @return concatenated data frame of the spending of the given months
 #' @export
 get.spend.data.months<- function(wb, months) {
   if (length(months)>=1) ws<- get.spend.data(wb, months[1])

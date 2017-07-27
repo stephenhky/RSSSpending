@@ -9,6 +9,9 @@ access.google.spreadsheet(docname)
 \arguments{
 \item{docname}{name of the spreadsheet}
 }
+\value{
+Google spreadsheet workbook
+}
 \description{
 Retrieve Google Spreadsheet Workbook.
 }
