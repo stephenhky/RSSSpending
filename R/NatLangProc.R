@@ -24,7 +24,7 @@ get.postag.annotator<- function() postag_annotator
 tokenize.int<- function(string) {
   s<- as.String(string)
   annobj<- Annotation(1L, 'sentence', 1L, nchar(s))
-  annotate(s, word_token_annotator, annobj)
+  annotate(s, Maxent_Word_Token_Annotator(), annobj)
 }
 
 #' Tokenize the given string.
@@ -44,7 +44,7 @@ tokenize<- function(string) {
 #' @return arrays of part-of-speech (tags used in Penn Treebank Project)
 #' @export
 tag.POS<- function(string) {
-  tbl<- annotate(as.String(string), postag_annotator, tokenize.int(as.String(string)))
+  tbl<- annotate(as.String(string), Maxent_POS_Tag_Annotator(), tokenize.int(as.String(string)))
   unlist(lapply(tbl$features, '[[', 'POS'))
 }
 
