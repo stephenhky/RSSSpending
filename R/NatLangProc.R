@@ -55,7 +55,8 @@ tag.POS<- function(string) {
 #' @export
 stem.all.tokens<- function(string) {
   tokentbl<- tokenize.int(as.String(string))
-  mapply(function(start, end) wordStem(substr(string, start, end)), 
-         tokentbl$start[ tokentbl$type=='word'], 
-         tokentbl$end[ tokentbl$type=='word'])
+  stemmed.tokens<- mapply(function(start, end) wordStem(substr(string, start, end)), 
+                          tokentbl$start[ tokentbl$type=='word'], 
+                          tokentbl$end[ tokentbl$type=='word'])
+  paste(stemmed.tokens, collapse = ' ')
 }

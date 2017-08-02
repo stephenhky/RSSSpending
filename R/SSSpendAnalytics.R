@@ -11,12 +11,18 @@ get.xwalk.map<- function() xwalk.map
 
 #' Put categories (stemmed) into a global hash table.
 #' 
-#' Not exported
+#' @param categories list of categories
+#' @return hash map
+#' @export
 categories.tohash<- function(categories) {
   hash<- list()
   for (category in categories) {
     stemmed.category<- tolower(stem.all.tokens(category))
-    hash[[stemmed.category]]<- append(hash[[stemmed.category]], category)
+    if (stemmed.category %in% names(hash)) {
+      hash[[stemmed.category]]<- append(hash[[stemmed.category]], category)  
+    } else {
+      hash[[stemmed.category]]<- category
+    }
   }
   hash
 }
@@ -65,3 +71,9 @@ normalize.category<- function(category, all.hash, xwalk.map) {
     category
   }
 }
+
+
+
+
+
+

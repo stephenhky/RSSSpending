@@ -6,7 +6,13 @@
 \usage{
 categories.tohash(categories)
 }
+\arguments{
+\item{categories}{list of categories}
+}
+\value{
+hash map
+}
 \description{
-Not exported
+Put categories (stemmed) into a global hash table.
 }
 
