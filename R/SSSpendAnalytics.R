@@ -57,7 +57,7 @@ choose.bestword<- function(words) names(which.max(mapply(score.word, words)))
 
 #' Normalize the category.
 #' 
-#' @param category
+#' @param category category to be normalized
 #' @param all.hash hash table for all categories
 #' @param xwalk.map crosswalk hash map
 #' @return normalized category

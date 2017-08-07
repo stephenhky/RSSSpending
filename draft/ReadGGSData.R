@@ -1,11 +1,4 @@
 
-# loading libraries
-library(googlesheets)
-library(dplyr)
-library(SnowballC)
-library(NLP)
-library(openNLP)
-
 # list
 spreadsheets<- gs_ls("SS Expenditure*")
 
@@ -100,5 +93,9 @@ normalize.category<- function(category, all.hash, xwalk.map) {
     category
   }
 }
+
+# Normalization routine
+
+
 
 # edit cells
