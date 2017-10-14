@@ -7,6 +7,8 @@
 normalize.category(category, all.hash, xwalk.map)
 }
 \arguments{
+\item{category}{category to be normalized}
+
 \item{all.hash}{hash table for all categories}
 
 \item{xwalk.map}{crosswalk hash map}

@@ -8,4 +8,4 @@ Description: Wrangling of Spending Data on Google Spreadsheet, use of NLP techni
 License: N/A
 LazyData: TRUE
 RoxygenNote: 5.0.1
-Depends: R(>= 3.2.0), googlesheets, dplyr(>= 0.4.2), SnowballC, NLP, openNLP
+Depends: R(>= 3.2.0), googlesheets(>= 0.2.0), dplyr(>= 0.4.2), SnowballC, NLP, openNLP
