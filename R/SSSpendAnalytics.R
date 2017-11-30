@@ -1,20 +1,13 @@
 
+
+
+
 #' Calculate the summary and output a dataframe
 #'
-#'@param wb Google spreadsheet workbook
-#'@param pausing.time pausing time in retrieving data, in seconds (default: 6)
+#'@param allspend.data data frame of spend data
 #'@return summary worksheet
 #'@export
-generate.summary<- function(wb, pausing.time=6) {
-  # retrieving data
-  allspend.data<- data.frame(stringsAsFactors = FALSE)
-  for (monthid in 1:12) {
-    thismonth.spenddata<- get.spend.data(wb, month.name[monthid])
-    Sys.sleep(pausing.time)
-    allspend.data<- allspend.data %>% bind_rows(thismonth.spenddata)
-  }
-  rm(thismonth.spenddata)
-  
+generate.summary<- function(allspend.data) {
   # calculation
   allmonth.sum<- allspend.data %>% group_by(Category) %>% summarise(Spending=sum(Debit, na.rm = TRUE))
   for (monthid in 1:12) {

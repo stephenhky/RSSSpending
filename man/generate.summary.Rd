@@ -4,12 +4,10 @@
 \alias{generate.summary}
 \title{Calculate the summary and output a dataframe}
 \usage{
-generate.summary(wb, pausing.time = 6)
+generate.summary(allspend.data)
 }
 \arguments{
-\item{wb}{Google spreadsheet workbook}
-
-\item{pausing.time}{pausing time in retrieving data, in seconds (default: 6)}
+\item{allspend.data}{data frame of spend data}
 }
 \value{
 summary worksheet

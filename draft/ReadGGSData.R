@@ -24,6 +24,7 @@ halfyear.data<- get.spend.data.months(ssspend_wb, month.name[1:6])
 
 # edit summary cells
 # https://cran.r-project.org/web/packages/googlesheets/vignettes/basic-usage.html
-summary.spreadsheet<- generate.summary(ssspend_wb, pausing.time = 6)
+allspend.data<- get.all.spend.data(ssspend_wb, pausing.time = 6)
+summary.spreadsheet<- generate.summary(allspend.data)
 online.update.gs.summary(ssspend_wb, summary.spreadsheet)
 

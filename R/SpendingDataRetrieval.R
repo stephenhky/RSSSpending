@@ -39,3 +39,21 @@ get.spend.data.months<- function(wb, months) {
   }
   ws
 }
+
+#' Retrieve all spend data
+#' 
+#'@param wb Google Spreadsheet workbook
+#'@param pausing.time pausing time in retrieving data, in seconds (default: 6)
+#'@return all spending data frame
+#'@export
+get.all.spend.data<- function(wb, pausing.time = 6) {
+  # retrieving data
+  allspend.data<- data.frame(stringsAsFactors = FALSE)
+  for (monthid in 1:12) {
+    thismonth.spenddata<- get.spend.data(wb, month.name[monthid])
+    Sys.sleep(pausing.time)
+    allspend.data<- allspend.data %>% bind_rows(thismonth.spenddata)
+  }
+  
+  allspend.data
+}
