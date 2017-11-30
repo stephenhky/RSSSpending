@@ -32,5 +32,5 @@ generate.summary<- function(allspend.data) {
 #'@param summary.df summary data frame
 #'@export
 online.update.gs.summary<- function(wb, summary.df) {
-  wb %>% gs_edit_cells(ws = 'Summary', input = summary.df)
+  wb %>% gs_edit_cells(ws = 'Summary', input = summary.df, anchor = 'A2')
 }
