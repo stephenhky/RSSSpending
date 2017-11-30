@@ -1,11 +1,43 @@
 
 #' Calculate the summary and output a dataframe
-#' 
+#'
+#'@param wb Google spreadsheet workbook
+#'@param pausing.time pausing time in retrieving data, in seconds (default: 6)
+#'@return summary worksheet
 #'@export
-generate.summary<- function(wb) {
-  allspend.data<- get.spend.data.months(wb, c('January', 'February', 'March',
-                                              'April', 'May', 'June', 
-                                              'July', 'August', 'September',
-                                              'October', 'November', 'December'))
+generate.summary<- function(wb, pausing.time=6) {
+  # retrieving data
+  allspend.data<- data.frame(stringsAsFactors = FALSE)
+  for (monthid in 1:12) {
+    thismonth.spenddata<- get.spend.data(wb, month.name[monthid])
+    Sys.sleep(pausing.time)
+    allspend.data<- allspend.data %>% bind_rows(thismonth.spenddata)
+  }
+  rm(thismonth.spenddata)
+  
+  # calculation
+  allmonth.sum<- allspend.data %>% group_by(Category) %>% summarise(Spending=sum(Debit, na.rm = TRUE))
+  for (monthid in 1:12) {
+    thismonth.data<- allspend.data %>% 
+      filter(months(Date)==month.name[monthid]) %>% 
+      group_by(Category) %>% 
+      summarize(Spending=sum(Debit, na.rm=TRUE)) %>% 
+      rename_(.dots=setNames('Spending', month.name[monthid]))
+    allmonth.sum<- allmonth.sum %>% left_join(thismonth.data, by='Category')
+  }
+  allmonth.sum<- allmonth.sum %>% 
+    select_(.dots=as.list(c('Category', month.name, 'Spending'))) %>%   # rearranging columns
+    rename(Total=Spending) %>%                                          # rename total
+    arrange(-Total) %>%                                                 # sort descendingly
+    mutate_all(funs(replace(., is.na(.), 0)))                           # fill all NAs with zero
+  
+  allmonth.sum
 }
 
+#' Update summary
+#' 
+#'@param summary.df summary data frame
+#'@export
+online.update.gs.summary<- function(wb, summary.df) {
+  wb %>% gs_edit_cells(ws = 'Summary', input = summary.df)
+}

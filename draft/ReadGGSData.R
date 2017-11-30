@@ -20,8 +20,10 @@ sheets<- gs_ws_ls(ssspend_wb)
 
 # get data
 jan.data<- get.spend.data(ssspend_wb, 'January')
-halfyear.data<- get.spend.data.months(ssspend_wb, c('January', 'February', 'March', 'April', 'May', 'June'))
+halfyear.data<- get.spend.data.months(ssspend_wb, month.name[1:6])
 
 # edit summary cells
 # https://cran.r-project.org/web/packages/googlesheets/vignettes/basic-usage.html
-summary.spreadsheet<- ssspend_wb %>% gs_read(ws='Summary')
+summary.spreadsheet<- generate.summary(ssspend_wb, pausing.time = 6)
+online.update.gs.summary(ssspend_wb, summary.spreadsheet)
+
