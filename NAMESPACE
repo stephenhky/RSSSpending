@@ -3,6 +3,7 @@
 export(access.google.spreadsheet)
 export(categories.tohash)
 export(choose.bestword)
+export(generate.summary)
 export(get.postag.annotator)
 export(get.spend.data)
 export(get.spend.data.months)

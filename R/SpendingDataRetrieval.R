@@ -7,12 +7,18 @@
 #' @export
 get.spend.data<- function(wb, month) {
   temp_ws<- wb %>% gs_read(ws = month);   max.rowid<- nrow(temp_ws);   rm(temp_ws)
-  wb %>% 
-    gs_read(ws = month, range = cell_limits(c(2, 2), c(max.rowid, 9))) %>% 
-    data.frame(stringsAsFactors=FALSE) %>% 
-    mutate(Date=as.Date(Date, "%m/%d/%Y"),
-           Debit=as.numeric(gsub('\\$', '', Debit)),
-           Comment=ifelse(is.na(Comment), '', Comment))
+  ws<- wb %>% gs_read(ws = month, range = cell_limits(c(2, 2), c(max.rowid, 9)))
+  max.rowid<- nrow(ws)
+  if (max.rowid>2) {
+    ws %>% 
+      data.frame(stringsAsFactors=FALSE) %>% 
+      mutate(Date=as.Date(Date, "%m/%d/%Y"),
+             Debit=as.numeric(gsub('\\$', '', Debit)),
+             Comment=ifelse(is.na(Comment), '', Comment))
+  } else {
+    data.frame(Date=c(), Place=c(), Category=c(), City=c(), Debit=c(), Comment=c(), Individual=c(), Payment.Method=c(),
+               stringsAsFactors=FALSE)
+  }
 }
 
 #' Retrieve spending data of a few given months from the given workbook. Dataframe will be concatenated.
