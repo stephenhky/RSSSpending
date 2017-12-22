@@ -1,7 +1,7 @@
 Package: RSSSpending
 Type: Package
 Title: Wrangling of Spending Data on Google Spreadsheet
-Version: 0.1.0
+Version: 0.1.1
 Author: Kwan-Yuet Ho, Ph.D.
 Maintainer: Kwan-Yuet Ho, Ph.D. <stephenhky@yahoo.com.hk>
 Description: Wrangling of Spending Data on Google Spreadsheet, use of NLP techniques

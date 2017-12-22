@@ -8,7 +8,7 @@
 get.spend.data<- function(wb, month) {
   temp_ws<- wb %>% gs_read(ws = month);   max.rowid<- nrow(temp_ws);   rm(temp_ws)
   if (max.rowid>=2) {
-    ws<- wb %>% gs_read(ws = month, range = cell_limits(c(2, 2), c(max.rowid, 9)))
+    ws<- wb %>% gs_read(ws = month, range = cell_limits(c(2, 2), c(max.rowid+1, 9)))
     max.rowid<- nrow(ws)
   } else {
     max.rowid<- 0
