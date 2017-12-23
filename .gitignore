@@ -298,3 +298,6 @@ ENV/
 
 # Executables
 .Rproj.user
+
+# JetBrains
+.idea/
