@@ -15,4 +15,3 @@ arrays of stemmed tokens
 \description{
 Stem all tokens using Porter stemmer.
 }
-

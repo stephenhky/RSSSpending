@@ -12,4 +12,3 @@ a list, essentially a hash map
 \description{
 Return the crosswalk hash map.
 }
-

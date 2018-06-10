@@ -12,4 +12,3 @@ tokenize(string)
 \description{
 Tokenize the given string.
 }
-

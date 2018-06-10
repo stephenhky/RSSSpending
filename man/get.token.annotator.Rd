@@ -12,4 +12,3 @@ maxent word token annotator
 \description{
 Return the singleton of maxent word token annotator
 }
-

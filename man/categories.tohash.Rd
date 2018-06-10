@@ -15,4 +15,3 @@ hash map
 \description{
 Put categories (stemmed) into a global hash table.
 }
-

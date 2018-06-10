@@ -15,4 +15,3 @@ Google spreadsheet workbook
 \description{
 Retrieve Google Spreadsheet Workbook.
 }
-

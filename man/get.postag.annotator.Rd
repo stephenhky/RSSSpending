@@ -12,4 +12,3 @@ part-of-speech tagging annotator
 \description{
 Return the singleton of part-of-speech (POS) tagging annotator
 }
-

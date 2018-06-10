@@ -17,4 +17,3 @@ data frame of the spending of the given month
 \description{
 Retrieve spending data of a given month from the given workbook.
 }
-

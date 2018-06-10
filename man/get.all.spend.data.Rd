@@ -17,4 +17,3 @@ all spending data frame
 \description{
 Retrieve all spend data
 }
-

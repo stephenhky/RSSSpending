@@ -15,4 +15,3 @@ arrays of part-of-speech (tags used in Penn Treebank Project)
 \description{
 Tag the part-of-speech (POS) of the tokens in the given string sentence.
 }
-

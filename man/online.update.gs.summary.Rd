@@ -12,4 +12,3 @@ online.update.gs.summary(wb, summary.df)
 \description{
 Update summary
 }
-

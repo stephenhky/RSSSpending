@@ -17,4 +17,3 @@ concatenated data frame of the spending of the given months
 \description{
 Retrieve spending data of a few given months from the given workbook. Dataframe will be concatenated.
 }
-

@@ -6,6 +6,8 @@
 #'
 #'@param allspend.data data frame of spend data
 #'@return summary worksheet
+#'@importFrom dplyr %>% group_by summarise filter rename_ left_join select_ rename arrange mutate_all
+#'@importFrom stats setNames
 #'@export
 generate.summary<- function(allspend.data) {
   # calculation
@@ -30,6 +32,8 @@ generate.summary<- function(allspend.data) {
 #' Update summary
 #' 
 #'@param summary.df summary data frame
+#'@importFrom dplyr %>%
+#'@importFrom googlesheets gs_edit_cells
 #'@export
 online.update.gs.summary<- function(wb, summary.df) {
   wb %>% gs_edit_cells(ws = 'Summary', input = summary.df, anchor = 'A2')

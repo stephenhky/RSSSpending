@@ -15,4 +15,3 @@ score
 \description{
 Score the word.
 }
-

@@ -19,4 +19,3 @@ normalized category
 \description{
 Normalize the category.
 }
-
