@@ -25,8 +25,8 @@ get.postag.annotator<- function() postag_annotator
 #' 
 #' Not exported.
 #' @param string string to tokenize
-#' @importFrom NLP Annotation
-#' @importFrom openNLP Maxent_Word_Token_Annotator as.String
+#' @importFrom NLP Annotation as.String
+#' @importFrom openNLP Maxent_Word_Token_Annotator
 tokenize.int<- function(string) {
   s<- as.String(string)
   annobj<- Annotation(1L, 'sentence', 1L, nchar(s))
