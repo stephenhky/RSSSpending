@@ -3,6 +3,7 @@
 # reference: https://stackoverflow.com/questions/30995232/how-to-use-opennlp-to-get-pos-tags-in-r
 
 #' tokenizer
+#' 
 #' @importFrom openNLP Maxent_Word_Token_Annotator
 word_token_annotator<- Maxent_Word_Token_Annotator()
 #' Return the singleton of maxent word token annotator
@@ -23,8 +24,9 @@ get.postag.annotator<- function() postag_annotator
 #' Return table of token annotation.
 #' 
 #' Not exported.
+#' @param string string to tokenize
 #' @importFrom NLP Annotation
-#' @importFrom openNLP Maxent_Word_Token_Annotator
+#' @importFrom openNLP Maxent_Word_Token_Annotator as.String
 tokenize.int<- function(string) {
   s<- as.String(string)
   annobj<- Annotation(1L, 'sentence', 1L, nchar(s))
@@ -46,7 +48,7 @@ tokenize<- function(string) {
 #' 
 #' @param string sentence to tag
 #' @return arrays of part-of-speech (tags used in Penn Treebank Project)
-#' @importFrom NLP annotate
+#' @importFrom NLP annotate as.String
 #' @export
 tag.POS<- function(string) {
   tbl<- annotate(as.String(string), Maxent_POS_Tag_Annotator(), tokenize.int(as.String(string)))

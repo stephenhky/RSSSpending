@@ -6,6 +6,9 @@
 \usage{
 tokenize.int(string)
 }
+\arguments{
+\item{string}{string to tokenize}
+}
 \description{
 Not exported.
 }

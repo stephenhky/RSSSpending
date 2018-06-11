@@ -30,7 +30,8 @@ generate.summary<- function(allspend.data) {
 }
 
 #' Update summary
-#' 
+#'
+#'@param wb Google Spreadsheet workbook  
 #'@param summary.df summary data frame
 #'@importFrom dplyr %>%
 #'@importFrom googlesheets gs_edit_cells

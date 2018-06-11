@@ -7,6 +7,8 @@
 online.update.gs.summary(wb, summary.df)
 }
 \arguments{
+\item{wb}{Google Spreadsheet workbook}
+
 \item{summary.df}{summary data frame}
 }
 \description{
